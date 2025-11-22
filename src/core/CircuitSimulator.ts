@@ -68,5 +68,6 @@ export class CircuitSimulator {
     this.components = [];
     this.wires = [];
     this.physicsEngine.clear();
+    Component.resetNodeCounter();
   }
 }

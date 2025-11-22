@@ -37,10 +37,21 @@ export abstract class Component {
   protected height: number = 40;
   protected color: string = '#333';
 
+  // Static node counter for unique IDs
+  private static nextNodeId: number = 1;
+
   constructor(type: ComponentType, position: Vector2) {
     this.type = type;
     this.position = position.clone();
     this.id = `${type}_${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  protected generateNodeId(): number {
+    return Component.nextNodeId++;
+  }
+
+  static resetNodeCounter(): void {
+    Component.nextNodeId = 1;
   }
 
   abstract getResistance(): number;

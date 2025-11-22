@@ -148,22 +148,22 @@ export class RenderEngine {
 
     switch (component.getType()) {
       case ComponentType.BATTERY:
-        this.renderBattery(component as Battery);
+        this.renderBattery(component as unknown as Battery);
         break;
       case ComponentType.RESISTOR:
-        this.renderResistor(component as Resistor);
+        this.renderResistor(component as unknown as Resistor);
         break;
       case ComponentType.LED:
-        this.renderLED(component as LED);
+        this.renderLED(component as unknown as LED);
         break;
       case ComponentType.SWITCH:
-        this.renderSwitch(component as Switch);
+        this.renderSwitch(component as unknown as Switch);
         break;
       case ComponentType.CAPACITOR:
-        this.renderCapacitor(component as Capacitor);
+        this.renderCapacitor(component as unknown as Capacitor);
         break;
       case ComponentType.MOTOR:
-        this.renderMotor(component as Motor);
+        this.renderMotor(component as unknown as Motor);
         break;
     }
 
