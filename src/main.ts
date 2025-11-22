@@ -23,12 +23,17 @@ class Application {
   private fpsTime = 0;
 
   constructor() {
+    console.log('🚀 Initializing Elite Circuit Builder...');
+
     const mainCanvas = document.getElementById('mainCanvas') as HTMLCanvasElement;
     const particleCanvas = document.getElementById('particleCanvas') as HTMLCanvasElement;
 
     if (!mainCanvas || !particleCanvas) {
+      console.error('❌ Canvas elements not found!');
       throw new Error('Canvas elements not found');
     }
+
+    console.log('✅ Canvas elements found');
 
     // Initialize systems
     this.renderEngine = new RenderEngine(mainCanvas);
@@ -38,9 +43,13 @@ class Application {
     this.inputManager = new InputManager(mainCanvas, this.simulator);
     new UIManager(this.simulator, this.inputManager);
 
+    console.log('✅ All systems initialized');
+
     this.setupCanvasResizing();
     this.hideLoading();
     this.start();
+
+    console.log('✅ Application started! Click components below to add them.');
   }
 
   private setupCanvasResizing(): void {
