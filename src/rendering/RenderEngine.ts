@@ -45,10 +45,11 @@ export class RenderEngine {
     this.ctx.fillRect(0, 0, this.width, this.height);
   }
 
-  renderGrid(): void {
-    this.ctx.strokeStyle = '#e0e0e0';
+  renderGrid(showHelpText: boolean = true): void {
+    // More visible grid
+    this.ctx.strokeStyle = '#d0d0d0';
     this.ctx.lineWidth = 1;
-    this.ctx.globalAlpha = 0.5;
+    this.ctx.globalAlpha = 0.3;
 
     // Vertical lines
     for (let x = 0; x < this.width; x += this.gridSize) {
@@ -67,6 +68,21 @@ export class RenderEngine {
     }
 
     this.ctx.globalAlpha = 1;
+
+    // Add helpful text only when empty
+    if (showHelpText && this.ctx.canvas.width > 0 && this.ctx.canvas.height > 0) {
+      this.ctx.save();
+      this.ctx.fillStyle = '#666';
+      this.ctx.font = 'bold 24px Arial';
+      this.ctx.textAlign = 'center';
+      this.ctx.textBaseline = 'middle';
+      this.ctx.fillText('👇 Click a button below to add components', this.width / 2, this.height / 2 - 30);
+
+      this.ctx.font = '18px Arial';
+      this.ctx.fillStyle = '#888';
+      this.ctx.fillText('Start with Battery + Resistor + LED', this.width / 2, this.height / 2 + 10);
+      this.ctx.restore();
+    }
   }
 
   renderWires(wires: Wire[]): void {

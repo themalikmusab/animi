@@ -103,7 +103,7 @@ class Application {
 
     // Render
     this.renderEngine.clear();
-    this.renderEngine.renderGrid();
+    this.renderEngine.renderGrid(this.simulator.getComponents().length === 0);
     this.renderEngine.renderWires(this.simulator.getWires());
     this.renderEngine.renderComponents(this.simulator.getComponents());
     this.inputManager.render(this.renderEngine);
