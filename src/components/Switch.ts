@@ -36,7 +36,7 @@ export class Switch extends Component {
     ];
   }
 
-  private generateNodeId(): number {
+  protected generateNodeId(): number {
     return Math.floor(Math.random() * 1000000);
   }
 
