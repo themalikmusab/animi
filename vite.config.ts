@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
-export default defineConfig({
-  base: '/animi/', // Set to your repo name
+export default defineConfig(({ command }) => ({
+  base: command === 'serve' ? '/' : '/animi/',
   server: {
     port: 3000,
     open: true
@@ -11,4 +11,4 @@ export default defineConfig({
     minify: 'esbuild',
     outDir: 'dist'
   }
-});
+}));
